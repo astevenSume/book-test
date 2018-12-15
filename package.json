@@ -1,0 +1,30 @@
+{
+  "name": "test-ts",
+  "version": "1.0.0",
+  "description": "only test example in book",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astevenSume/book-test.git"
+  },
+  "keywords": [
+    "tsbook"
+  ],
+  "author": "slex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astevenSume/book-test/issues"
+  },
+  "homepage": "https://github.com/astevenSume/book-test#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-tslint": "^8.1.3",
+    "gulp-typescript": "^5.0.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2"
+  }
+}
