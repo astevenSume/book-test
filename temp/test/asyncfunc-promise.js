@@ -63,10 +63,13 @@ var ViewAsync = (function () {
         return Q.Promise(function (resolve, reject) {
             try {
                 var $container = $(container);
+
                 if ($container.length == 0) {
                     throw new Error("Container not found!");
                 }
-                $($container).html(html);
+                // console.log($container);
+                // $($container).html(html);
+                $container.html(html);
                 resolve($(_this._container));
             }
             catch (e) {
