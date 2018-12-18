@@ -79,11 +79,17 @@ var ViewAsync = (function () {
         return Q.Promise(function (resolve, reject) {
             try {
                 var getJson = _this._loadJsonAsync(_this._serviceUrl, _this._args);
-                var getTemplate = _this._loadHbsAsync(_this._templateUrl);
+                var getTemplate = _this._loadHbsAsync(_this._templateUrl)
+                    .then(_this._compileHbsAsync);
                 Q.all([getJson, getTemplate]).then(function (result) {
                     var json = result[0];
-                    var template = result[0];
-                    console.log(json);
+                    var template = result[1];
+                    _this._jsonToHtmlAsync(template, json).then(function (html) {
+                        return _this._appendHtmlAsync(html, _this._container);
+                    })
+                        .then(function ($container) {
+                        resolve($container);
+                    });
                 });
             }
             catch (error) {
@@ -95,6 +101,6 @@ var ViewAsync = (function () {
 }());
 var serviceUrl = 'http://localhost:4000/users/asynow';
 var templateUrl = 'http://localhost:4000/users/asynow_temp';
-var conf = { container: '', serviceUrl: serviceUrl, templateUrl: templateUrl, args: { 'way': 'getData' } };
+var conf = { container: '.shome', serviceUrl: serviceUrl, templateUrl: templateUrl, args: { 'way': 'getData' } };
 var viewAsync = new ViewAsync(conf);
 viewAsync.renderAsync();

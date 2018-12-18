@@ -22,6 +22,7 @@ class ViewAsync {
         dataType: "json",
         data: args,
         success: (json) => {
+          // console.log(json);
           resolve(json);
         },
         error: (e) => {
@@ -37,6 +38,7 @@ class ViewAsync {
         type: "GET",
         dataType: "text",
         success: (hbs) => {
+          // console.log(hbs);
           resolve(hbs);
         },
         error: (e) => {
@@ -87,20 +89,19 @@ class ViewAsync {
     return Q.Promise((resolve, reject) => {
       try {
         var getJson = this._loadJsonAsync(this._serviceUrl, this._args);
-        var getTemplate = this._loadHbsAsync(this._templateUrl);
+        var getTemplate = this._loadHbsAsync(this._templateUrl)
+                .then(this._compileHbsAsync);
 
         Q.all([getJson, getTemplate]).then((result) => {
           var json = result[0];
-          var template = result[0];
+          var template = result[1];
 
-          console.log(json);
-
-          // this._jsonToHtmlAsync(template, json).then((html: string)=>{
-          //     return this._appendHtmlAsync(html, this._container);
-          // })
-          // .then(($container: any) => {
-          //   resolve($container);
-          // });
+          this._jsonToHtmlAsync(template, json).then((html: string)=>{
+              return this._appendHtmlAsync(html, this._container);
+          })
+          .then(($container: any) => {
+            resolve($container);
+          });
 
         });
       }
@@ -116,7 +117,7 @@ class ViewAsync {
 const serviceUrl = 'http://localhost:4000/users/asynow';
 const templateUrl= 'http://localhost:4000/users/asynow_temp';
 
-let conf = {container:'', serviceUrl: serviceUrl, templateUrl: templateUrl, args: {'way':'getData'}};
+let conf = {container:'shome', serviceUrl: serviceUrl, templateUrl: templateUrl, args: {'way':'getData'}};
 
 let viewAsync = new ViewAsync(conf);
 viewAsync.renderAsync();
