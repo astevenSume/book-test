@@ -117,7 +117,7 @@ class ViewAsync {
 const serviceUrl = 'http://localhost:4000/users/asynow';
 const templateUrl= 'http://localhost:4000/users/asynow_temp';
 
-let conf = {container:'shome', serviceUrl: serviceUrl, templateUrl: templateUrl, args: {'way':'getData'}};
+let conf = {container:'.shome', serviceUrl: serviceUrl, templateUrl: templateUrl, args: {'way':'getData'}};
 
 let viewAsync = new ViewAsync(conf);
 viewAsync.renderAsync();
