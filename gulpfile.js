@@ -9,7 +9,6 @@ gulp.task('lint', function() {
           .pipe(tslint({formatter: 'verbose'}))
           .pipe(tslint.report());
 })
-
 var tsTestProject = ts.createProject({
   removeComments : true,
   noImplicitAny : true,
