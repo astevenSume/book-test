@@ -1,2 +1,2 @@
-bar = 0;
-var bar;
+var $ = require("jquery");
+$.each();

@@ -19,7 +19,7 @@ var tsTestProject = ts.createProject({
 });
 
 gulp.task('tsc-test',function(){
-  return gulp.src('./test/**/**.test.ts').pipe(tsTestProject()).js.pipe(gulp.dest('./temp/test/'));
+  return gulp.src('./test/asyncfunc-promise.ts').pipe(tsTestProject()).js.pipe(gulp.dest('./temp/test/'));
 });
 
 gulp.task('browser-sync', function(done){
