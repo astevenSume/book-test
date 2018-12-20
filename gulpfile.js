@@ -9,16 +9,7 @@ gulp.task('lint', function() {
           .pipe(tslint({formatter: 'verbose'}))
           .pipe(tslint.report());
 })
-var tsTestProject = ts.createProject({
-  removeComments : true,
-  noImplicitAny : true,
-  target : 'ES6',
-  module : 'commonjs',
-  declarationFiles: false,
-  compilerOptions: {
-    "lib": [ "es2015" ]
-  }
-});
+var tsTestProject = ts.createProject('./tsconfig.json');
 
 gulp.task('tsc-test',function(){
   return gulp.src('./test/main.test.ts').pipe(tsTestProject()).js.pipe(gulp.dest('./temp/test/'));
@@ -38,5 +29,5 @@ function tscTest(done){
   gulp.src('./test/**/**.test.ts').pipe(tsTestProject()).js.pipe(gulp.dest('./temp/test/'));
   done();
 }
-
+// gulp.task('default', gulp.series('lint','tsc-test'));
 gulp.task('default', gulp.series('lint','tsc-test', 'browser-sync'));

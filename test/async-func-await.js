@@ -59,3 +59,15 @@ function fn() {
     });
 }
 fn();
+// dose(n) {
+//   return new Promise(resolve, reject)=> {
+//     resolve(3);
+//   }
+// }
+// asyncOper = (n:number) => void {
+//
+// }
+// async function fn() : Promise<number> {
+//   var i = await asyncOper;
+//   return 2;
+// }
