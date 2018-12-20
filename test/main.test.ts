@@ -1,34 +1,36 @@
-function dose(i:number):Promise<string> {
-    return new Promise((resolve,reject)=>{
-      console.log('involing...');
-      setTimeout(function(){
-        // return '234'; //return虽然不报错，但是不能正确返回值
-        resolve('23aa');
-      }, 2000);
+class Mammal {
+  breathe(): string {
+    return "I'm alive!";
+  }
+}
+class WingeAnimal {
+  fly(): string {
+    return "I can fly!";
+  }
+}
 
+class Bat implements Mammal, WingeAnimal {
+  breathe: () => string;
+  fly : () => string;
+
+  say():string{
+    return "saying..";
+  }
+}
+
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
+  baseCtors.forEach(baseCtor=>{
+    Object.getOwnPropertyNames(baseCtor.prototype).forEach(name=>{
+      if (name != 'constructor') {
+        derivedCtor.prototype[name] = baseCtor.prototype[name];
+      }
     });
+  });
 }
 
-async function fn(): Promise<number> {
-  console.log('abc');
-  var i = await dose(3);
-  console.log(i);
-  return 123;
-}
+// applyMixins(Bat, [Mammal, WingeAnimal]);
 
-fn();
-
-
-// dose(n) {
-//   return new Promise(resolve, reject)=> {
-//     resolve(3);
-//   }
-// }
-// asyncOper = (n:number) => void {
-//
-// }
-
-// async function fn() : Promise<number> {
-//   var i = await asyncOper;
-//   return 2;
-// }
+let bat = new Bat();
+console.log(bat.breathe());
+console.log(bat.fly());
+console.log(bat.say());
