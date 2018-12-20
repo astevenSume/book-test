@@ -1,5 +1,5 @@
-class ViewAsync {
-    constructor(config) {
+var ViewAsync = /** @class */ (function () {
+    function ViewAsync(config) {
         this._appendHtml = function (html, cb, errorCb) {
             try {
                 if ($(this._container).length == 0) {
@@ -17,34 +17,34 @@ class ViewAsync {
         this._serviceUrl = config._serviceUrl;
         this._args = config._args;
     }
-    _loadJson(url, args, cb, errorCb) {
+    ViewAsync.prototype._loadJson = function (url, args, cb, errorCb) {
         $.ajax({
             url: url,
             type: "GET",
             dataType: "json",
             data: args,
-            success: (json) => {
+            success: function (json) {
                 cb(json);
             },
-            error: (e) => {
+            error: function (e) {
                 errorCb(e);
             }
         });
-    }
-    _loadHbs(url, cb, errorCb) {
+    };
+    ViewAsync.prototype._loadHbs = function (url, cb, errorCb) {
         $.ajax({
             url: url,
             type: "GET",
             dataType: "text",
-            success: (hbs) => {
+            success: function (hbs) {
                 cb(hbs);
             },
-            error: (e) => {
+            error: function (e) {
                 errorCb(e);
             }
         });
-    }
-    _compileHbs(hbs, cb, errorCb) {
+    };
+    ViewAsync.prototype._compileHbs = function (hbs, cb, errorCb) {
         try {
             var template = Handlebars.compile(hbs);
             cb(template);
@@ -52,8 +52,8 @@ class ViewAsync {
         catch (e) {
             errorCb(e);
         }
-    }
-    _jsonToHtml(template, json, cb, errorCb) {
+    };
+    ViewAsync.prototype._jsonToHtml = function (template, json, cb, errorCb) {
         try {
             var html = template(json);
             cb(html);
@@ -61,14 +61,15 @@ class ViewAsync {
         catch (e) {
             errorCb(e);
         }
-    }
-    render(cb, errorCb) {
+    };
+    ViewAsync.prototype.render = function (cb, errorCb) {
+        var _this = this;
         try {
-            this._loadJson(this._serviceUrl, this._args, (json) => {
-                this._loadHbs(this._templateUrl, (hbs) => {
-                    this._compileHbs(hbs, (template) => {
-                        this._jsonToHtml(template, json, (html) => {
-                            this._appendHtml(template, cb, errorCb);
+            this._loadJson(this._serviceUrl, this._args, function (json) {
+                _this._loadHbs(_this._templateUrl, function (hbs) {
+                    _this._compileHbs(hbs, function (template) {
+                        _this._jsonToHtml(template, json, function (html) {
+                            _this._appendHtml(template, cb, errorCb);
                         }, errorCb);
                     }, errorCb);
                 }, errorCb);
@@ -77,5 +78,6 @@ class ViewAsync {
         catch (e) {
             errorCb(e);
         }
-    }
-}
+    };
+    return ViewAsync;
+}());

@@ -12,13 +12,16 @@ gulp.task('lint', function() {
 var tsTestProject = ts.createProject({
   removeComments : true,
   noImplicitAny : true,
-  target : 'ES3',
+  target : 'ES6',
   module : 'commonjs',
-  declarationFiles: false
+  declarationFiles: false,
+  compilerOptions: {
+    "lib": [ "es2015" ]
+  }
 });
 
 gulp.task('tsc-test',function(){
-  return gulp.src('./test/asyncfunc-promise.ts').pipe(tsTestProject()).js.pipe(gulp.dest('./temp/test/'));
+  return gulp.src('./test/main.test.ts').pipe(tsTestProject()).js.pipe(gulp.dest('./temp/test/'));
 });
 
 gulp.task('browser-sync', function(done){

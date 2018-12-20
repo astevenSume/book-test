@@ -1,7 +1,7 @@
 ///<reference path="../node_modules/@types/Handlebars/index.d.ts" />
 ///<reference path="../node_modules/@types/jquery/index.d.ts" />
 ///<reference path="../node_modules/@types/q/index.d.ts" />
-class ViewAsync {
+class NowViewAsync {
   private _container: string;
   private _templateUrl: string;
   private _serviceUrl: string;
@@ -119,5 +119,5 @@ const templateUrl= 'http://localhost:4000/users/asynow_temp';
 
 let conf = {container:'.shome', serviceUrl: serviceUrl, templateUrl: templateUrl, args: {'way':'getData'}};
 
-let viewAsync = new ViewAsync(conf);
+let viewAsync = new NowViewAsync(conf);
 viewAsync.renderAsync();
