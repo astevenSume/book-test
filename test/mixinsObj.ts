@@ -1,15 +1,15 @@
-class Mam {
+class Mammal {
   breathe(): string {
     return "I'm alive!";
   }
 }
-class Wam {
+class WingeAnimal {
   fly(): string {
     return "I can fly!";
   }
 }
 
-class Bts implements Mam, Wam {
+class Bat implements Mammal, WingeAnimal {
   breathe: () => string;
   fly : () => string;
 
@@ -18,7 +18,7 @@ class Bts implements Mam, Wam {
   }
 }
 
-function applyMixinss(derivedCtor: any, baseCtors: any[]) {
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
   baseCtors.forEach(baseCtor=>{
     Object.getOwnPropertyNames(baseCtor.prototype).forEach(name=>{
       if (name != 'constructor') {
@@ -28,9 +28,9 @@ function applyMixinss(derivedCtor: any, baseCtors: any[]) {
   });
 }
 
-// applyMixinss(Bts, [Mam, Wam]);
+// applyMixins(Bat, [Mammal, WingeAnimal]);
 
-let bats = new Bts();
-console.log(bats.breathe());
-console.log(bats.fly());
-console.log(bats.say());
+let bat = new Bat();
+console.log(bat.breathe());
+console.log(bat.fly());
+console.log(bat.say());

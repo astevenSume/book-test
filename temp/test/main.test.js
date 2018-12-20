@@ -1,19 +1,19 @@
-class Mammal {
+class Mam {
     breathe() {
         return "I'm alive!";
     }
 }
-class WingeAnimal {
+class Wam {
     fly() {
         return "I can fly!";
     }
 }
-class Bat {
+class Bts {
     say() {
         return "saying..";
     }
 }
-function applyMixins(derivedCtor, baseCtors) {
+function applyMixinss(derivedCtor, baseCtors) {
     baseCtors.forEach(baseCtor => {
         Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
             if (name != 'constructor') {
@@ -22,7 +22,7 @@ function applyMixins(derivedCtor, baseCtors) {
         });
     });
 }
-let bat = new Bat();
-console.log(bat.breathe());
-console.log(bat.fly());
-console.log(bat.say());
+let bats = new Bts();
+console.log(bats.breathe());
+console.log(bats.fly());
+console.log(bats.say());
