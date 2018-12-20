@@ -1,3 +1,3 @@
-import * as app from './model';
-var user = new app.app.models.UserModel();
+import * as model from './model';
+var user = new model.app.models.UserModel();
 user.say();

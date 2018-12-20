@@ -1,5 +1,5 @@
 "use strict";
 exports.__esModule = true;
-var app = require("./model");
-var user = new app.app.models.UserModel();
+var model = require("./model");
+var user = new model.app.models.UserModel();
 user.say();
