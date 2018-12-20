@@ -1,4 +1,4 @@
-var ViewAsync = /** @class */ (function () {
+var ViewAsync = (function () {
     function ViewAsync(config) {
         this._appendHtml = function (html, cb, errorCb) {
             try {

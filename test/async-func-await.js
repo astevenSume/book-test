@@ -37,8 +37,7 @@ function dose(i) {
     return new Promise(function (resolve, reject) {
         console.log('involing...');
         setTimeout(function () {
-            // return '234'; //return虽然不报错，但是不能正确返回值
-            resolve('23aa');
+            resolve('string');
         }, 2000);
     });
 }
@@ -49,25 +48,13 @@ function fn() {
             switch (_a.label) {
                 case 0:
                     console.log('abc');
-                    return [4 /*yield*/, dose(3)];
+                    return [4, dose(3)];
                 case 1:
                     i = _a.sent();
                     console.log(i);
-                    return [2 /*return*/, 123];
+                    return [2, 123];
             }
         });
     });
 }
 fn();
-// dose(n) {
-//   return new Promise(resolve, reject)=> {
-//     resolve(3);
-//   }
-// }
-// asyncOper = (n:number) => void {
-//
-// }
-// async function fn() : Promise<number> {
-//   var i = await asyncOper;
-//   return 2;
-// }

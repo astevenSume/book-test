@@ -1,7 +1,4 @@
-///<reference path="../node_modules/@types/Handlebars/index.d.ts" />
-///<reference path="../node_modules/@types/jquery/index.d.ts" />
-///<reference path="../node_modules/@types/q/index.d.ts" />
-var NowViewAsync = /** @class */ (function () {
+var NowViewAsync = (function () {
     function NowViewAsync(config) {
         this._container = config.container;
         this._templateUrl = config.templateUrl;
@@ -16,7 +13,6 @@ var NowViewAsync = /** @class */ (function () {
                 dataType: "json",
                 data: args,
                 success: function (json) {
-                    // console.log(json);
                     resolve(json);
                 },
                 error: function (e) {
@@ -32,7 +28,6 @@ var NowViewAsync = /** @class */ (function () {
                 type: "GET",
                 dataType: "text",
                 success: function (hbs) {
-                    // console.log(hbs);
                     resolve(hbs);
                 },
                 error: function (e) {

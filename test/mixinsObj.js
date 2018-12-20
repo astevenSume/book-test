@@ -1,4 +1,4 @@
-var Mammal = /** @class */ (function () {
+var Mammal = (function () {
     function Mammal() {
     }
     Mammal.prototype.breathe = function () {
@@ -6,7 +6,7 @@ var Mammal = /** @class */ (function () {
     };
     return Mammal;
 }());
-var WingeAnimal = /** @class */ (function () {
+var WingeAnimal = (function () {
     function WingeAnimal() {
     }
     WingeAnimal.prototype.fly = function () {
@@ -14,7 +14,7 @@ var WingeAnimal = /** @class */ (function () {
     };
     return WingeAnimal;
 }());
-var Bat = /** @class */ (function () {
+var Bat = (function () {
     function Bat() {
     }
     Bat.prototype.say = function () {
@@ -31,7 +31,6 @@ function applyMixins(derivedCtor, baseCtors) {
         });
     });
 }
-// applyMixins(Bat, [Mammal, WingeAnimal]);
 var bat = new Bat();
 console.log(bat.breathe());
 console.log(bat.fly());
