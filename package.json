@@ -30,6 +30,10 @@
   },
   "dependencies": {
     "@types/handlebars": "^4.0.39",
-    "@types/q": "^1.5.1"
+    "@types/jquery": "^3.3.28",
+    "@types/q": "^1.5.1",
+    "browserify": "^16.2.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }
