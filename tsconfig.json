@@ -2,7 +2,7 @@
   "declarationFiles": false,
   "exclude":["node_modules", "typings"],
   "compilerOptions": {
-    "target" : "ES6",
+    "target" : "ES5",
     "removeComments" : true,
     "noImplicitAny" : true,
     "module" : "commonjs",

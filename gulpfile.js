@@ -51,4 +51,4 @@ function tscTest(done){
   done();
 }
 // gulp.task('default', gulp.series('lint','tsc-test'));
-gulp.task('default', gulp.series('lint','tsc-test', 'bundle-test','browser-sync'));
+gulp.task('default', gulp.series('lint','tsc-test','browser-sync'));
