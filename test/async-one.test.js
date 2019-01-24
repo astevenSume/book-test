@@ -1,4 +1,4 @@
-var ViewAsync = (function () {
+r ViewAsync = (function () {
     function ViewAsync(config) {
         this._appendHtml = function (html, cb, errorCb) {
             try {
