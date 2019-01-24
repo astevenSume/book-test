@@ -5,6 +5,7 @@ var browserSync = require('browser-sync'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     browserify = require('browserify');
+var gutil = require('gulp-util');
 
 //这个ok
 // gulp.task('bundle-js-other', function(){
@@ -47,7 +48,10 @@ gulp.task('browser-sync', function(done){
 });
 
 function tscTest(done){
-  gulp.src('./test/**/**.test.ts').pipe(tsTestProject()).js.pipe(gulp.dest('./temp/test/'));
+  gulp.src('./test/**/**.test.ts').pipe(tsTestProject()).on('error', function(err){
+    gutil.log('createPj error : ' , err.message)
+    this.emit('end')
+  }).js.pipe(gulp.dest('./temp/test/'));
   done();
 }
 // gulp.task('default', gulp.series('lint','tsc-test','browser-sync'));

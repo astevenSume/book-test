@@ -1,6 +1,3 @@
 
-let a =  ['so', 456, true]
-
-a.forEach((val) => {
-  console.log(val)
-})
+enum Colors {red,yellow,blue,greend}
+console.log(Colors.blue)
